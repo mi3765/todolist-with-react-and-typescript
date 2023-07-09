@@ -20,6 +20,10 @@ function App() {
       checked: false,
     };
 
+    const handleEdit = () => {
+
+    }
+
     setTodos([newTodo, ...todos]);
     setInputValue("");
   };
@@ -33,9 +37,16 @@ function App() {
       <div>
         <h2>TodoList with Typescript</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
-          <input type="text"  className='inputText' onChange={(e) => handleChange(e)}/>
+          <input type="text" onChange={(e) => handleChange(e)} className='inputText'/>
           <input type="submit" value="作成" className='submitButton'/>
         </form>
+        <ul className='todoList'>
+          {todos.map((todo) => (
+            <li key={todo.id}>
+              <input type="text" onChange={(e) => handleEdit()} className='inputText' value={todo.inputValue}/>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
